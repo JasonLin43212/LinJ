@@ -1,65 +1,52 @@
-#CuriousIncident -- Theodore Peters, Jason Lin
-#SoftDev1 pd07
-#K10 -- Jinja Tuning
-#2018-09-22
+# Theodore Peters, Jason Lin -- CuriousIncident
+# SoftDev1 pd7
+# K10 -- Jinja Tuning
+# 2018-09-24
 
-from flask import Flask,render_template
-import csv
-from random import randint
+from flask import Flask, render_template
+from os import getcwd
+from random import random
+from csv import reader
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "Hello, there! Click <a href='/occupations'> here</a> to go to where you want to go."
+    return "Do you want to look at <a href='/occupations'>job?</a>"
 
 @app.route("/occupations")
-def occupation_generator():
-    csvDict = makeDict("./data/occupations.csv")
-    return render_template("occupationPage.html",
-                           dict=csvDict,
-                           randomJob=randOccupation(csvDict))
+def template():
+    d = csvToDict()
+    t = round(sum(d.values()), 1)
+    r = weightedRandom(d, t)
+    return render_template("/a.html", jobDict = d, result = r, total = t)
 
-def makeDict(file):
+def csvToDict():
+    # prepare an occupations dictionary to be returned...
+    occupations = {}
 
-    someDict = {}
+    # open the csv file object, bind to variable
+    csvFileObject = open("data/occupations.csv", 'r')
+    # read the records in the csv
+    readerObject = reader(csvFileObject)
 
-    # Open csv file
-    with open(file, newline='') as csvfile:
+    for record in readerObject:
+        # skip over the first & last records
+        if record[0] != "Job Class" and record[0] != "Total":
+            occupations[record[0]] = float(record[1])
+    csvFileObject.close()
+    return occupations
 
-        # A reader object iterates through
-        # and separates each row by comma into a string array
-        csvfile = csv.reader(csvfile, delimiter=',')
-
-        # For each row, assign string 0 as the key, and
-        # string 1 in int (percentage*10) form as the value
-        # exclude the first and the "Total" row
-        rowNum = 0
-        for row in csvfile:
-            if rowNum != 0:
-                someDict[row[0]] = float(row[1])
-            rowNum += 1
-        someDict.pop('Total')
-
-    return someDict
-
-def randOccupation(occupationDict):
-
-    # num is a random int from 0 - 998
-    num = randint(0, 1000)/10
-    print(num)
-
-    # Sum the percentages of the occupations until
-    # you get to a sum greater than num
-    # (the interval between sums is your percentage)
-    # Break once this is true
-    Sum = 0
-    for occupation in occupationDict:
-        Sum += occupationDict[occupation]
-        if Sum >= num:
-            return occupation
-            break
-    return "None"
+def weightedRandom(wc, total = None):
+    if total == None: # If the total of the weights is known, can avoid calculating sum
+        total = sum(wc.values()) # Possibly useful if finding weighted random several times.
+    endWeight= total * random() # endWeight in correct range when curWeight >= endWeight
+    curWeight = 0
+    for i in wc:
+        curWeight += wc[i]
+        if curWeight >= endWeight:
+            return i # dict value.
+    raise ValueError("Value of total passed was incorrect.")
 
 if __name__ == "__main__":
     app.debug = True
