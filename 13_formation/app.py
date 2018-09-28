@@ -11,10 +11,10 @@ def home_page():
     return render_template("formThing.html")
 
 
-@app.route("/auth")
+@app.route("/auth",methods=["POST"])
 def authenticate():
     return render_template("answer.html",
-                           username=request.args["username"],
+                           username=request.form["username"],
                            method=request.method)
 
 if __name__ == "__main__":
