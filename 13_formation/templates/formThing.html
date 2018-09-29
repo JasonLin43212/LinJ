@@ -4,7 +4,15 @@
     <title>What is your username?</title>
   </head>
   <body>
-    Please enter a username:
+    Please enter a username (GET):
+    <br>
+    <form action="/auth" method="GET">
+      <input type="text" name="username">
+      <input type="submit" name="subl" value="Submit">
+    </form>
+    <br>
+    <br>
+    Please enter a username (POST):
     <br>
     <form action="/auth" method="POST">
       <input type="text" name="username">
