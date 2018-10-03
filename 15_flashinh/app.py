@@ -12,38 +12,45 @@ app.secret_key = os.urandom(32) #generates a secret key
 
 @app.route("/")
 def login():
-    if "username" in session: # checks if there was a previous session
-        return redirect(url_for("welcome")) # redirects to welcome page if there was
+    # Checks if there was a previous session and redirect or render accordingly
+    if "username" in session:
+        return redirect(url_for("welcome"))
     else:
-        return render_template("login.html") # login page if no previous session
+        return render_template("login.html")
 
 @app.route("/auth", methods=["POST"])
 def auth():
-    username=request.form["username"] # gets the username and password from form
+    # Gets the username and password from form
+    username=request.form["username"]
     password= request.form["password"]
-    if username == "Adil": # checks if username is correct
+
+    # Checks if username and password is correct
+    # If not, then redirect back to login page with flash message
+    # If correct, creates a session and goes to welcome page
+    if username == "Adil":
             if password=="Jason":
-                session["username"] = username # if username and password is correct, creates a session
-                return redirect(url_for("welcome")) # redirects to welcome page
+                session["username"] = username
+                return redirect(url_for("welcome"))
             else:
-                flash("Wrong Password")
-                return redirect(url_for("login")) # redirects to error page (wrong password)
+                flash("Wrong Password!")
+                return redirect(url_for("login"))
     else:
-        flash("Wrong Username")
-        return redirect(url_for("login")) #redirects to error page (wrong username)
+        flash("Wrong Username!")
+        return redirect(url_for("login"))
 
 @app.route("/welcome")
 def welcome():
-    if "username" in session: # checks if there was a previous session
-        return render_template("welcome.html",user=session["username"]) #brings user to a welcome page
+    # Checks if a session exists and renders or redirects accordingly
+    if "username" in session:
+        return render_template("welcome.html",user=session["username"])
     else:
-        return redirect(url_for("login")) # if no previous session, gives the login page
-    
+        return redirect(url_for("login"))
+
 @app.route("/logout")
 def logout():
+    # Removes session when user logs out and redirects back to login page
     session.pop("username")
-    return redirect(url_for("login")) # removes username from session and goes back to login page
-
+    return redirect(url_for("login"))
 
 if __name__ == "__main__":
     app.debug = True
