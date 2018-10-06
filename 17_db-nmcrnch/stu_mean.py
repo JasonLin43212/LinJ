@@ -31,6 +31,16 @@ command = "CREATE TABLE peeps_avg(id INTEGER, average INTEGER)"
 c.execute(command)
 
 for x in range(len(total_grade)):
-    command = "INSERT INTO peeps_avg VALUES({0},{1})".format(x+1,2)
+    command = "INSERT INTO peeps_avg VALUES({0},{1})".format(x+1,total_grade[x]/num_classes[x])
+    c.execute(command)
+
+db.commit()
+
+def addIntoCourse(course_name,grade,student_id):
+    command = 'INSERT INTO courses VALUES("{0}",{1},{2})'.format(course_name,grade,student_id)
+    c.execute(command)
+    db.commit();
+
+addIntoCourse("physics",87,4)
 
 db.close() #close database
