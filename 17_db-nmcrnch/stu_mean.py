@@ -11,31 +11,26 @@ DB_FILE="foo.db"
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
-# Create and populate the courses table
-csvfile = open('data/courses.csv')
-reader = csv.DictReader(csvfile)
-command = "CREATE TABLE courses(code TEXT, mark INTEGER, id INTEGER)"
+total_grade = []
+num_classes = []
+
+
+command = "SELECT name, peeps.id, mark FROM courses, peeps WHERE peeps.id = courses.id"
 c.execute(command)
-for row in reader:
-    command = 'INSERT INTO courses VALUES("' + row['code']+'",' +  row['mark'] + "," + row['id'] + ")"
-    c.execute(command)
 
-# Create and populate the courses table
-csvfile = open('data/peeps.csv')
-reader = csv.DictReader(csvfile)
-command = "CREATE TABLE peeps(name TEXT, age INTEGER, id INTEGER)"
+# When you loop through c, it gives you (name,id,mark)
+for row in c:
+    if row[1] > len(total_grade):
+        total_grade.insert(row[1]-1,row[2])
+        num_classes.insert(row[1]-1,1)
+    else:
+        total_grade[row[1]-1] += row[2]
+        num_classes[row[1]-1] += 1
+
+command = "CREATE TABLE peeps_avg(id INTEGER, average INTEGER)"
 c.execute(command)
-for row in reader:
-    command = 'INSERT INTO peeps VALUES("' + row['name']+'",' +  row['age'] + "," + row['id'] + ")"
-    c.execute(command)
 
-
-command = "SELECT name, peeps.id,mark FROM courses, peeps WHERE peeps.id=courses.id;"
-c.execute(command)
-print(c.fetchall()[2][2])
-
-db.commit() #save changes
+for x in range(len(total_grade)):
+    command = "INSERT INTO peeps_avg VALUES({0},{1})".format(x+1,2)
 
 db.close() #close database
-
-
