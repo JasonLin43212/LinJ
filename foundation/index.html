@@ -1,9 +1,67 @@
+<!--
+Trip & Sha-FalLin' -- Jason Lin and Shafali Gupta
+SoftDev1 pd7
+K21 -- Who Does Frame Work For?
+2018-11-7
+-->
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Foundation Guide</title>
-    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="stylings.css">
   </head>
   <body>
+    <h1>Guide To Using Foundation</h1>
+    <h3>How To Get Foundation</h3>
+    <p>
+      To get Foundation, please go to this link to download it. Then, extract the
+      zip file and copy the "foundation.min.css" file to where your project lives.
+      In the &lt;head&gt; tag in your HTML file, insert the following:
+      <code>
+          &lt;link rel="stylesheet" href="path_to_foundation.min.css"&gt;
+      </code>
+    </p>
+    <h2>How To Use Grids and Cells</h2>
+    In order to divide your website into sections, you need to use the &lt;div&gt;
+    tags to define sections of your website. To define a section that you want to
+    split up, you set the class equal to <code>grid-x</code>. Now, for the &lt;div&gt;
+    's that are inside the div with class <code>grid-x</code>, we can set the class
+    equal to <code>cell</code>. Here is how the code looks like:<br><br>
+    <textarea rows="6" cols="80" readonly>
+      <div class="grid-x">
+        <div class="red-div cell">This is a cell.</div>
+        <div class="green-div cell">This is another cell.</div>
+        <div class="blue-div cell">This is a third cell.</div>
+      </div>
+    </textarea>
+    How It Looks Like:
+    <div class="grid-x">
+      <div class="red-div cell">This is a cell.</div>
+      <div class="green-div cell">This is another cell.</div>
+      <div class="blue-div cell">This is a third cell.</div>
+    </div><br>
+    Now what if you want to divide each of the cells into smaller sections. Well,
+    you can! The format for this is [screen_size]-[number between 1-12]. This means
+    that for a certain screen size (small, medium, large), the cell will take up
+    [number between 1-12] out of 12 spaces. Let's look at an example:<br>
+    <textarea rows="6" cols="80" readonly>
+      <div class="grid-x">
+        <div class="red-div cell small-4 medium-5 large-7">This is a cell.</div>
+        <div class="green-div cell small-4 medium-5 large-4">This is another cell.</div>
+        <div class="blue-div cell small-4 medium-2 large-1">This is a third cell.</div>
+      </div>
+    </textarea>
+    How It Looks Like:
+    <div class="grid-x">
+      <div class="red-div cell small-4 medium-5 large-7">This is a cell.</div>
+      <div class="green-div cell small-4 medium-5 large-4">This is another cell.</div>
+      <div class="blue-div cell small-4 medium-2 large-1">This is a third cell.</div>
+    </div><br>
+    Try resizing this window. You will see that if the window is small, the cells will be
+    in a 4:4:4 ratio. When the window is medium, it is in a 5:5:2 ratio, and when
+    the window is large, it is in a 7:4:1 ratio.
+    <br><br>
   </body>
 </html>
