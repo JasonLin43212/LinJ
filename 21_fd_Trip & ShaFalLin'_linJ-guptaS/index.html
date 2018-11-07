@@ -63,5 +63,57 @@ K21 -- Who Does Frame Work For?
     in a 4:4:4 ratio. When the window is medium, it is in a 5:5:2 ratio, and when
     the window is large, it is in a 7:4:1 ratio.
     <br><br>
+    Alright, now let's add some padding and margins to each cell. To add margins
+    or padding, simply put <code>grid-margin-x</code> or <code>grid-padding-x</code>
+    as another class for the div that has the class of <code>grid-x</code>.<br><br>
+    Padding:
+    <textarea rows="6" cols="80" readonly>
+      <div class="grid-x grid-padding-x">
+        <div class="red-div cell small-4">This is a cell.</div>
+        <div class="green-div cell small-4">This is another cell.</div>
+        <div class="blue-div cell small-4">This is a third cell.</div>
+      </div>
+    </textarea>
+    <div class="grid-x grid-padding-x">
+      <div class="red-div cell small-4">This is a cell.</div>
+      <div class="green-div cell small-4">This is another cell.</div>
+      <div class="blue-div cell small-4">This is a third cell.</div>
+    </div>
+    Notice how the text is indented to the right a little bit. That is the padding that
+    is inside of each cell. Now let's see how the margin looks like.<br><br>
+    Margins:
+    <textarea rows="6" cols="80" readonly>
+      <div class="grid-x grid-margin-x">
+        <div class="red-div cell small-4">This is a cell.</div>
+        <div class="green-div cell small-4">This is another cell.</div>
+        <div class="blue-div cell small-4">This is a third cell.</div>
+      </div>
+    </textarea>
+    <div class="grid-x grid-margin-x">
+      <div class="red-div cell small-4">This is a cell.</div>
+      <div class="green-div cell small-4">This is another cell.</div>
+      <div class="blue-div cell small-4">This is a third cell.</div>
+    </div><br>
+    Notice how the margins are outside of the cells instead of inside? There is
+    no indent inside of the cells.
+    <br><br>
+    You can also use the <code>shrink</code> to make the cell take up whatever it needs
+    or <code>auto</code> to take up what is remaining. You can pair these with screen
+    size in the following way <code>[screen_size]-auto</code> or <code>[screen_size]
+    -shrink</code> to make it have this behavior under certain conditions.<br>
+    Auto:
+    <textarea rows="6" cols="80" readonly>
+      <div class="grid-x grid-margin-x">
+        <div class="red-div cell small-4 medium-7 large-9">This is a cell.</div>
+        <div class="green-div cell auto">This is an auto cell.</div>
+        <div class="blue-div cell small-4 medium-auto large-2">This is a medium auto cell.</div>
+      </div>
+    </textarea>
+    <div class="grid-x grid-margin-x">
+      <div class="red-div cell small-4 medium-7 large-9">This is a cell.</div>
+      <div class="green-div cell auto">This is an auto for all sizes cell.</div>
+      <div class="blue-div cell small-4 medium-auto large-2">This is a medium auto cell.</div>
+    </div>
+
   </body>
 </html>
