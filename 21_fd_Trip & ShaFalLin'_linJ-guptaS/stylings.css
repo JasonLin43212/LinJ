@@ -1,18 +1,15 @@
-.green-div{
-  background-color: green;
-  color: white;
-}
-
-.red-div{
-  background-color: red;
-  color: white;
-}
-
-.blue-div{
-  background-color: blue;
-  color: white;
+.div1{
+  border: solid #EEEEEE 1px;
 }
 
 body{
   margin: 30px;
+}
+
+h1,h3{
+  text-align: center;
+}
+
+#buttons{
+  text-align: center;
 }

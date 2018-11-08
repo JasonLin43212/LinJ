@@ -15,122 +15,30 @@ K21 -- Who Does Frame Work For?
     <link rel="stylesheet" type="text/css" href="stylings.css">
   </head>
   <body>
-    <h1>Guide To Using Foundation</h1>
-    <h3>How To Get Foundation</h3>
-    <p>
-      To get Foundation, please go to this link to download it. Then, extract the
-      zip file and copy the "foundation.min.css" file to where your project lives.
-      In the &lt;head&gt; tag in your HTML file, insert the following:
-      <code>&lt;link rel="stylesheet" href="path_to_foundation.min.css"&gt;</code>
-      <br>However, we reccommend that you use the CDN
-    </p>
-    <h2>How To Use Grids and Cells</h2>
-    In order to divide your website into sections, you need to use the &lt;div&gt;
-    tags to define sections of your website. To define a section that you want to
-    split up, you set the class equal to <code>grid-x</code>. Now, for the &lt;div&gt;
-    's that are inside the div with class <code>grid-x</code>, we can set the class
-    equal to <code>cell</code>. Here is how the code looks like:<br><br>
-    <textarea rows="6" cols="80" readonly>
-      <div class="grid-x">
-        <div class="red-div cell">This is a cell.</div>
-        <div class="green-div cell">This is another cell.</div>
-        <div class="blue-div cell">This is a third cell.</div>
+    <h1>Demonstration of Using Foundation</h1>
+    <div class="grid-x grid-padding-x grid-margin-x ">
+      <div class="div1 cell small-12 medium-6 large-4" id="menu">
+        Hello, welcome to our demonstration of Foundation features. Here is the
+        menu feature to help you navigate around our page.<br>
+        <ul class="menu">
+          <li><a href="#">Grids</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#buttons">Buttons</a></li>
+        </ul>
       </div>
-    </textarea>
-    How It Looks Like:
-    <div class="grid-x">
-      <div class="red-div cell">This is a cell.</div>
-      <div class="green-div cell">This is another cell.</div>
-      <div class="blue-div cell">This is a third cell.</div>
+      <div class="div1 cell small-12 medium-6 large-4">
+        Try resizing the window and see what happens to these cells. Where does this
+        cell go?
+      </div>
+      <div class="div1 cell small-12 medium-12 large-4" id="buttons">
+        <h3>Buttons</h3>
+        <a href="https://www.youtube.com/" class="button">Go to Youtube</a>
+        <a href="https://www.youtube.com/" class="button secondary">I am secondary button</a>
+        <button type="button" class="success button">This is a success button.</button>
+        <button type="button" class="alert button">This is an alert button.</button><br>
+      </div>
     </div><br>
-    Now what if you want to divide each of the cells into smaller sections. Well,
-    you can! The format for this is [screen_size]-[number between 1-12]. This means
-    that for a certain screen size (small, medium, large), the cell will take up
-    [number between 1-12] out of 12 spaces. Let's look at an example:<br>
-    <textarea rows="6" cols="80" readonly>
-      <div class="grid-x">
-        <div class="red-div cell small-4 medium-5 large-7">This is a cell.</div>
-        <div class="green-div cell small-4 medium-5 large-4">This is another cell.</div>
-        <div class="blue-div cell small-4 medium-2 large-1">This is a third cell.</div>
-      </div>
-    </textarea>
-    How It Looks Like:
-    <div class="grid-x">
-      <div class="red-div cell small-4 medium-5 large-7">This is a cell.</div>
-      <div class="green-div cell small-4 medium-5 large-4">This is another cell.</div>
-      <div class="blue-div cell small-4 medium-2 large-1">This is a third cell.</div>
-    </div><br>
-    Try resizing this window. You will see that if the window is small, the cells will be
-    in a 4:4:4 ratio. When the window is medium, it is in a 5:5:2 ratio, and when
-    the window is large, it is in a 7:4:1 ratio. Note: if the ratios for a particular
-    "row" add up to over 12, then the last cell that makes the total over 12 will
-    go on the next row.<br><br>
-    Overflow:
-    <textarea rows="6" cols="80" readonly>
-      <div class="grid-x">
-        <div class="red-div cell small-6 medium-5 large-10 ">They all overflow in large.</div>
-        <div class="green-div cell small-10 medium-5 large-10">This is overflowing in small.</div>
-        <div class="blue-div cell small-2 medium-4 large-9">This is overflowing in medium.</div>
-      </div>
-    </textarea>
-    How It Looks Like:
-    <div class="grid-x">
-      <div class="red-div cell small-6 medium-5 large-10 ">They all overflow in large.</div>
-      <div class="green-div cell small-10 medium-5 large-10">This is overflowing in small.</div>
-      <div class="blue-div cell small-2 medium-4 large-9">This is overflowing in medium.</div>
-    </div>
-    <br><br>
-    Alright, now let's add some padding and margins to each cell. To add margins
-    or padding, simply put <code>grid-margin-x</code> or <code>grid-padding-x</code>
-    as another class for the div that has the class of <code>grid-x</code>.<br><br>
-    Padding:
-    <textarea rows="6" cols="80" readonly>
-      <div class="grid-x grid-padding-x">
-        <div class="red-div cell small-4">This is a cell.</div>
-        <div class="green-div cell small-4">This is another cell.</div>
-        <div class="blue-div cell small-4">This is a third cell.</div>
-      </div>
-    </textarea>
-    <div class="grid-x grid-padding-x">
-      <div class="red-div cell small-4">This is a cell.</div>
-      <div class="green-div cell small-4">This is another cell.</div>
-      <div class="blue-div cell small-4">This is a third cell.</div>
-    </div>
-    Notice how the text is indented to the right a little bit. That is the padding that
-    is inside of each cell. Now let's see how the margin looks like.<br><br>
-    Margins:
-    <textarea rows="6" cols="80" readonly>
-      <div class="grid-x grid-margin-x">
-        <div class="red-div cell small-4">This is a cell.</div>
-        <div class="green-div cell small-4">This is another cell.</div>
-        <div class="blue-div cell small-4">This is a third cell.</div>
-      </div>
-    </textarea>
-    <div class="grid-x grid-margin-x">
-      <div class="red-div cell small-4">This is a cell.</div>
-      <div class="green-div cell small-4">This is another cell.</div>
-      <div class="blue-div cell small-4">This is a third cell.</div>
-    </div><br>
-    Notice how the margins are outside of the cells instead of inside? There is
-    no indent inside of the cells.
-    <br><br>
-    You can also use the <code>shrink</code> to make the cell take up whatever it needs
-    or <code>auto</code> to take up what is remaining. You can pair these with screen
-    size in the following way <code>[screen_size]-auto</code> or <code>[screen_size]
-    -shrink</code> to make it have this behavior under certain conditions.<br>
-    Auto:
-    <textarea rows="6" cols="80" readonly>
-      <div class="grid-x grid-margin-x">
-        <div class="red-div cell small-4 medium-7 large-9">This is a cell.</div>
-        <div class="green-div cell auto">This is an auto cell.</div>
-        <div class="blue-div cell small-5 medium-auto large-2">This is a medium auto cell.</div>
-      </div>
-    </textarea>
-    <div class="grid-x grid-margin-x">
-      <div class="red-div cell small-4 medium-7 large-9">This is a cell.</div>
-      <div class="green-div cell auto">This is an auto for all sizes cell.</div>
-      <div class="blue-div cell small-5 medium-auto large-2">This is a medium auto cell.</div>
-    </div>
+
 
   </body>
 </html>
