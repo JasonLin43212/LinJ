@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Relaxing and RESTful Demo</title>
+  </head>
+  <body>
+    <a href="{{recipe['url']}}"><h1>Recipe for {{recipe["label"]}}</h1></a>
+    <img src="{{recipe['image']}}" alt="Image not found" height="300" width = "300">
+    <h3>Ingredient List:</h3>
+    <ul>
+    {% for ingredient in recipe["ingredientLines"] %}
+      <li>{{ingredient}}</li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
