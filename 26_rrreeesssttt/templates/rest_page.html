@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Relaxing and RESTful Demo Part 2</title>
+  </head>
+  <body>
+    <h1>New York Times Search for Trump</h1>
+    {% for result in NYT_array %}
+      <a href="{{result['web_url']}}"><h4>{{result["headline"]["main"]}}</h4></a>
+      <h6>{{result["byline"]["original"]}}</h6>
+      {{result["snippet"]}}<br>
+      <hr>
+    {% endfor %}
+    <h1>Memes by memegenerator.net</h1>
+    {% for result in meme_array %}
+      <h4>{{result["displayName"]}}</h4>
+      <img src="{{result['instanceImageUrl']}}" alt="Meme image not found" width=300 height=300>
+      <hr>
+    {% endfor %}
+    <h1>Random Chuck Norris Jokes</h1>
+    {% for result in chuck_array %}
+      <p>{{result["joke"]}}</p>
+      <hr>
+    {% endfor %}
+  </body>
+</html>
