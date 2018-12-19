@@ -8,6 +8,9 @@ K28 -- Sequential Progression
 
 var fibonacci = (n) => {
   // 0 and 1 are less than 2 and return themselves
+  if (n < 0) {
+    return "Please use a non-negative number.";
+  }
   if (n < 2){
     return n;
   }
