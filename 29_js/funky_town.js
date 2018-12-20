@@ -40,7 +40,8 @@ var gcd = (a,b) => {
 }
 
 var randomStudent = () => {
-  var students = ["Amit","Jason","Clara","Jerry","Puneet","Runmin","Ivan","Rubin"];
+  var students = ["Amit","Jason","Clara","Jerry","Puneet","Runmin","Ivan",
+                  "Rubin","Shafali","Daniel","Ray","Tina","Mai","Maggie"];
   var randomIndex = Math.floor(Math.random()*students.length);
   return students[randomIndex];
 }
@@ -59,7 +60,7 @@ fib_button.addEventListener("click",handle_fib);
 var handle_gcd = () => {
   var gcd_input1 = document.getElementById("gcd_input1");
   var gcd_input2 = document.getElementById("gcd_input2");
-  var out = gcd(gcd_input1,gcd_input2);
+  var out = gcd(gcd_input1.value,gcd_input2.value);
   console.log("gcd output: " + out);
   var gcd_result = document.getElementById("gcd_result");
   gcd_result.innerHTML = "GCD Result: " + out;
@@ -67,3 +68,13 @@ var handle_gcd = () => {
 
 var gcd_button = document.getElementById("gcd");
 gcd_button.addEventListener("click",handle_gcd);
+
+var handle_rand = () => {
+  var out = randomStudent();
+  console.log("random student: " + out);
+  var rand_result = document.getElementById("rand_result");
+  rand_result.innerHTML = "Random Student: " + out;
+}
+
+var rand_button = document.getElementById("rand");
+rand_button.addEventListener("click",handle_rand);
