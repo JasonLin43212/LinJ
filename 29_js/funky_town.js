@@ -1,8 +1,8 @@
 /*
-Team LearLination -- Amit Narang and Jason Lin
+Team Trip and ShafaLin -- Shafali Gupta and Jason Lin
 SoftDev1 pd7
-K28 -- Sequential Progression
-2018-12-18
+K29 -- Sequential Progression II: Electric Boogaloo
+2018-12-19
 */
 
 
