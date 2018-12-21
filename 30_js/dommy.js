@@ -57,7 +57,7 @@ var addFib = function(e){
     var ll = l.getElementsByTagName("li").length;
     var it = document.createElement("li");
     it.innerHTML = fib(ll);
-    fixLi(it);
+    //fixLi(it);
     l.appendChild(it);
 
 };
