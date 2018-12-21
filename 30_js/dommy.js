@@ -1,4 +1,11 @@
 // Lo, what is this? Could it be a VALUE-ADDED-KEY2SUCCESS?!?!
+/*
+LearLination -- Amit Narang and Jason Lin
+SoftDev1 pd<p7
+K30 -- Sequential Progression III: Season of the Witch
+2018-12-20
+*/
+
 
 var changeHeading = function(e) {
   // Changes heading to Hello World if the user activates the
