@@ -1,6 +1,8 @@
 // Lo, what is this? Could it be a VALUE-ADDED-KEY2SUCCESS?!?!
 
 var changeHeading = function(e) {
+  // Changes heading to Hello World if the user activates the
+  // mouseout event and will set it to the list element otherwise
     var h = document.getElementById("h");
     if (e.type === "mouseout"){
       h.innerHTML = "Hello World!";
@@ -11,26 +13,23 @@ var changeHeading = function(e) {
 };
 
 var removeItem = function(e) {
+  // Removes the target and sets the heading back to Hello World
   e.target.remove();
   var h = document.getElementById("h");
   h.innerHTML = "Hello World!";
 };
 
-var lis = document.getElementsByTagName("li");
-
-for(var i=0; i < lis.length; i++) {
-    lis[i].addEventListener('mouseover', changeHeading);
-    lis[i].addEventListener('mouseout', changeHeading);
-    lis[i].addEventListener('click', removeItem);
-};
+var fixLi = (item) => {
+  item.addEventListener('mouseover', changeHeading);
+  item.addEventListener('mouseout', changeHeading);
+  item.addEventListener('click', removeItem);
+}
 
 var addItem = function(e) {
     var list = document.getElementById("thelist");
     var item = document.createElement("li");
     item.innerHTML = "WORD";
-    item.addEventListener('mouseover', changeHeading);
-    item.addEventListener('mouseout', changeHeading);
-    item.addEventListener('click', removeItem);
+    fixLi(item);
     list.appendChild( item );
 };
 
@@ -38,40 +37,32 @@ var button = document.getElementById("b");
 button.addEventListener('click', addItem);
 
 var fib = function(n) {
-    if(n < 2){
-        return 1;
+if(n < 2){
+return 1;
     } else {
-        return fib(n-1) + fib(n-2);
+return fib(n-1) + fib(n-2);
     }
 };
 
 var addFib = function(e){
-    console.log(e);
-    /*
- ???
- ...
- ???
- */
-};
+    // Check # of li items in list , return fib at that ind
+    var l = document.getElementById("fiblist");
+    var ll = l.getElementsByTagName("li").length;
+    var it = document.createElement("li");
+    it.innerHTML = fib(ll);
+    fixLi(it);
+    l.appendChild(it);
 
-var addFib2 = function(e){
-    console.log(e);
-    /*
- ???
- ...see QAF re: DYNAMIC PROGRAMMING...
- ???
- */
 };
 
 var fb = document.getElementById("fb");
 fb.addEventListener("click", addFib);
 
-/*
-document.getElementById('b').addEventListener('click',function() {
-  var v = document.createElement('li');
-  v.innerHTML = 'WORD';
-  document.getElementById('thelist').appendChild(v);
-});
-document.getElementById('thelist').addEventListener('click',
-function(e) {e.target.remove()});
-*/
+var lis = document.getElementsByTagName("li");
+
+for(var i=0; i < lis.length; i++) {
+    console.log(lis[i].innerHTML);
+    lis[i].addEventListener('mouseover', changeHeading);
+    lis[i].addEventListener('mouseout', changeHeading);
+    lis[i].addEventListener('click', removeItem);
+};
